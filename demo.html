@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Demo | Cognifyz Internship</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #5a189a;
+      padding: 20px;
+      color: #fff;
+    }
+
+    section {
+      margin: 50px 20px;
+    }
+
+    input {
+      padding: 12px;
+      width: 250px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      background-color: #7209b7;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px 5px;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5a189a;
+    }
+
+    #colorButton {
+      background-color: #ff595e;
+    }
+
+    #resetBtn {
+      background-color: #6c757d;
+    }
+
+    #resetBtn:hover {
+      background-color: #495057;
+    }
+
+    footer {
+      background-color: #5a189a;
+      padding: 20px;
+      color: #fff;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body onload="greetUser()">
+
+<header>
+  <h1>JavaScript Tasks Demo</h1>
+</header>
+
+<!-- Button with color change -->
+<section>
+  <h2>Click the Button to Change Color</h2>
+  <button id="colorButton">Click Me!</button>
+</section>
+
+<!-- Calculator -->
+<section>
+  <h2>Simple Calculator</h2>
+  <input type="number" id="num1" placeholder="First Number">
+  <input type="number" id="num2" placeholder="Second Number">
+  <br>
+  <button onclick="addNumbers()">Add</button>
+  <button id="resetBtn" onclick="resetCalc()">Reset</button>
+  <p id="calcResult"></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Pranav Lohar | Cognifyz Technologies Internship</p>
+</footer>
+
+<script>
+  // Greeting Alert on page load
+  function greetUser() {
+    const hour = new Date().getHours();
+    let message = "";
+    if (hour < 12) {
+      message = "Good Morning!";
+    } else if (hour < 18) {
+      message = "Good Afternoon!";
+    } else {
+      message = "Good Evening!";
+    }
+    alert(message);
+  }
+
+  // Button Color Changer
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("colorButton");
+    button.addEventListener("click", function () {
+      const colors = ["#1982c4", "#ff595e", "#8ac926", "#ffca3a", "#6a4c93"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      this.style.backgroundColor = randomColor;
+    });
+  });
+
+  // Calculator Function
+  function addNumbers() {
+    const n1 = parseFloat(document.getElementById("num1").value);
+    const n2 = parseFloat(document.getElementById("num2").value);
+    const resultElem = document.getElementById("calcResult");
+
+    if (!isNaN(n1) && !isNaN(n2)) {
+      resultElem.innerText = "Result: " + (n1 + n2);
+    } else {
+      resultElem.innerText = "Please enter valid numbers.";
+    }
+  }
+
+  // Reset Function
+  function resetCalc() {
+    document.getElementById("num1").value = "";
+    document.getElementById("num2").value = "";
+    document.getElementById("calcResult").innerText = "";
+  }
+</script>
+
+</body>
+</html>
